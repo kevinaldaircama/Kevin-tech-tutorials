@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acerca de - Kevin Tech Tutorials</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="icon" href="image/3440119_ico.png" type="3440119_ico.png">
+<style>
+:root{
+  --accent:#6366f1; --bg:#f9fafb; --text:#111827; --muted:#6b7280; --card:#fff; --radius:14px; --ff:'Inter',sans-serif;
+}
+[data-theme="dark"]{
+  --bg:#0f172a; --text:#f1f5f9; --muted:#94a3b8; --card:#1e293b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--ff); background:var(--bg); color:var(--text); transition: .3s;}
+header{position:sticky;top:0;z-index:30;background:var(--card);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 6px rgba(0,0,0,.05);}
+.left{display:flex;align-items:center;gap:12px;}
+.logo{font-weight:700;font-size:18px;color:var(--accent);}
+.menu-btn, .icon-btn{background:none;border:none;font-size:20px;cursor:pointer;color:var(--accent);}
+.side-menu{position:fixed;top:0;left:-260px;width:240px;height:100%;background:var(--card);box-shadow:2px 0 10px rgba(0,0,0,.2);transition:left .3s;padding:20px;z-index:40;display:flex;flex-direction:column;}
+.side-menu.open{left:0;}
+.side-menu .close-btn{align-self:flex-end;background:none;border:none;font-size:22px;cursor:pointer;color:var(--accent);margin-bottom:20px;}
+.side-menu a{display:block;padding:10px 0;color:var(--text);text-decoration:none;font-weight:500;}
+.side-menu a:hover{color:var(--accent);}
+.search-overlay{position:fixed;top:56px;left:0;width:100%;display:none;justify-content:center;padding:10px 20px;background:rgba(0,0,0,.05);z-index:25;}
+.search-box{background:var(--card);padding:10px 16px;border-radius:var(--radius);display:flex;align-items:center;gap:10px;width:100%;max-width:600px;box-shadow:0 2px 6px rgba(0,0,0,.1);}
+.search-box input{flex:1;padding:10px;border:1px solid var(--muted);border-radius:var(--radius);font-size:16px;}
+.search-box button{background:var(--accent);color:white;border:none;padding:10px 14px;border-radius:var(--radius);cursor:pointer;}
+main.content{max-width:900px;margin:40px auto;padding:0 20px;}
+main.content h2{color:var(--accent);margin-bottom:10px;}
+main.content p{margin-bottom:20px;line-height:1.6;color:var(--muted);}
+.links{margin-top:30px;display:flex;gap:15px;flex-wrap:wrap;}
+.links a{color:var(--accent);text-decoration:none;font-weight:600;}
+footer{margin-top:50px;padding:20px;background:var(--card);color:var(--muted);text-align:center;}
+.socials{margin:20px 0;display:flex;justify-content:center;gap:20px;}
+.socials a{color:var(--accent);font-size:22px;text-decoration:none;}
+.cookies-banner{position:fixed;bottom:0;left:0;width:100%;background:var(--card);padding:15px 20px;box-shadow:0 -2px 6px rgba(0,0,0,.1);display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px;z-index:60;}
+.cookies-banner p{color:var(--text);}
+.cookies-banner button{background:var(--accent);color:white;border:none;padding:8px 14px;border-radius:var(--radius);cursor:pointer;font-weight:600;}
+</style>
+</head>
+<body>
+
+<!-- Menú lateral -->
+<nav class="side-menu" id="sideMenu">
+  <button class="close-btn" id="closeBtn"><i class="fas fa-times"></i></button>
+  <a href="#">Inicio</a>
+
+  <!-- Acerca de mí con submenú -->
+  <div class="submenu">
+    <a href="#about" class="submenu-toggle">
+      contenido<i class="fas fa-chevron-down"></i>
+    </a>
+    <div class="submenu-items">
+      <a href="ver-mas-publicaciones"> últimas publicaciones </a>
+      <a href="#videos">últimos videos</a>
+      <a href="#">redes</a>
+    </div>
+  </div>
+
+  <a href="#community">Comunidad</a>
+</nav>
+
+
+<!-- Header -->
+<header>
+  <div class="left">
+    <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+    <div class="logo">Kevin Tech Tutorials</div>
+  </div>
+  <div class="right">
+    <button class="icon-btn" id="themeBtn"><i class="fas fa-moon"></i></button>
+    <button class="icon-btn" id="searchBtn"><i class="fas fa-search"></i></button>
+  </div>
+</header>
+
+<!-- Buscador -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Buscar en el sitio...">
+    <button id="closeSearch"><i class="fas fa-times"></i></button>
+  </div>
+</div>
+
+<!-- Contenido principal -->
+<main class="content">
+  <h2>Bienvenido a Kevin Tech Tutorials</h2>
+  <p>En este sitio encontrarás tutoriales, guías y recursos tecnológicos que te ayudarán a aprender y mejorar tus habilidades digitales.</p>
+
+  <h2>Mi historia</h2>
+  <p>Desde mis primeros pasos en la tecnología, he querido combinar pasión y aprendizaje para crear contenido accesible y práctico para todos.</p>
+
+  <h2>Mi misión</h2>
+  <p>Mi objetivo es hacer que la tecnología sea comprensible para todos, fomentando la curiosidad y el aprendizaje continuo.</p>
+
+  <div class="links">
+    <a href="/"><i class="fas fa-home"></i> Inicio</a>
+    <a href="privacidad"><i class="fas fa-user-shield"></i> Privacidad</a>
+    <a href="terminos"><i class="fas fa-file-contract"></i> Términos</a>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="socials">
+    <a href="https://youtube.com/@kevintechtutorials?si=M0sl8IJ5QOrWUtXg"><i class="fab fa-youtube"></i></a>
+    <a href="https://t.me/kevintechtu"><i class="fab fa-telegram"></i></a>
+    <a href="https://whatsapp.com/channel/0029VaGmNBB4Y9lvO2Ppem2l"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.facebook.com/profile.php?id=61571818858581"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/kevintechtutorialsofi?igsh=MWxoOGMwZTZxNTdpYg=="><i class="fab fa-instagram"></i></a>
+  </div>
+  <div>© <span id="year"></span> Kevin Tech Tutorials</div>
+</footer>
+
+<!-- Banner Cookies -->
+<div class="cookies-banner" id="cookiesBanner">
+  <p><i class="fas fa-cookie-bite"></i> Usamos cookies para mejorar tu experiencia. <a href="cookies">Más info</a></p>
+  <button id="acceptCookies">Aceptar</button>
+</div>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Modo oscuro
+const themeBtn = document.getElementById('themeBtn');
+themeBtn.addEventListener('click',()=>{
+  const theme=document.body.getAttribute('data-theme');
+  if(theme==='dark'){
+    document.body.removeAttribute('data-theme');
+    themeBtn.innerHTML='<i class="fas fa-moon"></i>'; 
+  }else{
+    document.body.setAttribute('data-theme','dark');
+    themeBtn.innerHTML='<i class="fas fa-sun"></i>';
+  }
+});
+
+// Menú lateral
+const menuBtn=document.getElementById('menuBtn');
+const closeBtn=document.getElementById('closeBtn');
+const sideMenu=document.getElementById('sideMenu');
+menuBtn.addEventListener('click',()=>sideMenu.classList.add('open'));
+closeBtn.addEventListener('click',()=>sideMenu.classList.remove('open'));
+
+// Buscador
+const searchBtn=document.getElementById('searchBtn');
+const searchOverlay=document.getElementById('searchOverlay');
+const closeSearch=document.getElementById('closeSearch');
+searchBtn.addEventListener('click',()=>searchOverlay.style.display="flex");
+closeSearch.addEventListener('click',()=>searchOverlay.style.display="none");
+
+// Cookies
+const cookiesBanner=document.getElementById('cookiesBanner');
+const acceptCookies=document.getElementById('acceptCookies');
+if(localStorage.getItem('cookiesAccepted')){
+  cookiesBanner.style.display="none";
+}
+acceptCookies.addEventListener('click',()=>{
+  localStorage.setItem('cookiesAccepted','true');
+  cookiesBanner.style.display="none";
+});
+</script>
+</body>
+</html>
