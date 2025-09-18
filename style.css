@@ -360,10 +360,11 @@ footer .legal a {
 }
 
 /* ====== OCULTAR SELECTOR GOOGLE TRANSLATE ====== */
-#google_translate_element,
+#google_translate_element {
+  display: none !important;
+}
 .goog-te-banner-frame,
+.goog-logo-link,
 .goog-te-gadget {
   display: none !important;
-  height: 0 !important;
-  visibility: hidden !important;
 }
