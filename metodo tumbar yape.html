@@ -65,6 +65,18 @@ footer{margin-top:50px;padding:20px;background:var(--card);color:var(--muted);te
 .submenu.open .submenu-toggle i {
   transform: rotate(180deg);
 }
+/* Ocultar completamente el selector de Google Translate */
+#google_translate_element,
+.goog-te-gadget {
+  display: none !important;
+}
+.goog-te-banner-frame.skiptranslate,
+.goog-te-gadget-simple {
+  display: none !important;
+}
+body {
+  top: 0px !important; /* Corrige el desplazamiento del body */
+}
 </style>
 </head>
 <body>
@@ -86,7 +98,7 @@ footer{margin-top:50px;padding:20px;background:var(--card);color:var(--muted);te
     </div>
   </div>
 
-  <a href="#community">Comunidad</a>
+  <a href="community">Comunidad</a>
 </nav>
 
 
@@ -144,7 +156,7 @@ Y hacerse pasar por la persona a la que van a dar de baja su Yape, decir que te 
   </div>
   <div>© <span id="year"></span> Kevin Tech Tutorials</div>
 </footer>
-
+<div id="google_translate_element"></div>
 <div class="cookies-banner" id="cookiesBanner">
   <p><i class="fas fa-cookie-bite"></i> Usamos cookies para mejorar tu experiencia. <a href="cookies.html">Más info</a></p>
   <button id="acceptCookies">Aceptar</button>
@@ -180,7 +192,39 @@ document.querySelectorAll('.submenu-toggle').forEach(toggle=>{
     parent.classList.toggle('open');
   });
 });
+/* ====== RECORDAR IDIOMA ====== */
+document.addEventListener("DOMContentLoaded", () => {
+  const match = document.cookie.match(/googtrans=\/[^\/]+\/([^;]+)/);
+  if (match && match[1]) {
+    const lang = match[1];
+    const select = document.querySelector(".goog-te-combo");
+    if (select) {
+      select.value = lang;
+      select.dispatchEvent(new Event("change"));
+    }
+  }
+});
+
+/* ====== TRADUCTOR FLAGS ====== */
+document.querySelectorAll(".gtw a").forEach(el => {
+  el.addEventListener("click", e => {
+    e.preventDefault();
+    const lang = el.getAttribute("data-lang");
+    const select = document.querySelector(".goog-te-combo");
+    if (select) {
+      select.value = lang;
+      select.dispatchEvent(new Event("change"));
+    }
+  });
+});
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'es',
+    autoDisplay: false
+  }, 'google_translate_element');
+}
 </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>

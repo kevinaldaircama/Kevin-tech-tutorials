@@ -39,7 +39,19 @@ footer{margin-top:50px;padding:20px;background:var(--card);color:var(--muted);te
 .socials a{color:var(--accent);font-size:22px;text-decoration:none;}
 .cookies-banner{position:fixed;bottom:0;left:0;width:100%;background:var(--card);padding:15px 20px;box-shadow:0 -2px 6px rgba(0,0,0,.1);display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px;z-index:60;}
 .cookies-banner p{color:var(--text);}
-.cookies-banner button{background:var(--accent);color:white;border:none;padding:8px 14px;border-radius:var(--radius);cursor:pointer;font-weight:600;}
+.cookies-banner button{background:var(--accent);color:white;border:none;padding:8px 14px;border-radius:var(--radius);cursor:pointer;font-weight:600;} 
+/* Ocultar completamente el selector de Google Translate */
+#google_translate_element,
+.goog-te-gadget {
+  display: none !important;
+}
+.goog-te-banner-frame.skiptranslate,
+.goog-te-gadget-simple {
+  display: none !important;
+}
+body {
+  top: 0px !important; /* Corrige el desplazamiento del body */
+}
 </style>
 </head>
 <body>
@@ -100,7 +112,7 @@ footer{margin-top:50px;padding:20px;background:var(--card);color:var(--muted);te
   </div>
   <div>© <span id="year"></span> Kevin Tech Tutorials</div>
 </footer>
-
+<div id="google_translate_element"></div>
 <div class="cookies-banner" id="cookiesBanner">
   <p><i class="fas fa-cookie-bite"></i> Usamos cookies para mejorar tu experiencia. <a href="cookies">Más info</a></p>
   <button id="acceptCookies">Aceptar</button>
@@ -146,6 +158,38 @@ acceptCookies.addEventListener('click',()=>{
   localStorage.setItem('cookiesAccepted','true');
   cookiesBanner.style.display="none";
 });
+/* ====== RECORDAR IDIOMA ====== */
+document.addEventListener("DOMContentLoaded", () => {
+  const match = document.cookie.match(/googtrans=\/[^\/]+\/([^;]+)/);
+  if (match && match[1]) {
+    const lang = match[1];
+    const select = document.querySelector(".goog-te-combo");
+    if (select) {
+      select.value = lang;
+      select.dispatchEvent(new Event("change"));
+    }
+  }
+});
+
+/* ====== TRADUCTOR FLAGS ====== */
+document.querySelectorAll(".gtw a").forEach(el => {
+  el.addEventListener("click", e => {
+    e.preventDefault();
+    const lang = el.getAttribute("data-lang");
+    const select = document.querySelector(".goog-te-combo");
+    if (select) {
+      select.value = lang;
+      select.dispatchEvent(new Event("change"));
+    }
+  });
+});
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'es',
+    autoDisplay: false
+  }, 'google_translate_element');
+}
 </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
