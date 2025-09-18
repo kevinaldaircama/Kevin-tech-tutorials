@@ -100,3 +100,23 @@ document.querySelectorAll(".gtw a").forEach(el => {
     }
   });
 });
+
+/* ====== RECORDAR IDIOMA SELECCIONADO ====== */
+// Leer cookie por nombre
+function getCookie(name) {
+  let value = "; " + document.cookie;
+  let parts = value.split("; " + name + "=");
+  if (parts.length === 2) return parts.pop().split(";").shift();
+}
+
+// Aplicar idioma guardado al cargar página
+document.addEventListener("DOMContentLoaded", () => {
+  const lang = getCookie("googtrans");
+  if (lang) {
+    const select = document.querySelector(".goog-te-combo");
+    if (select) {
+      select.value = lang.split("/")[2];
+      select.dispatchEvent(new Event("change"));
+    }
+  }
+});
