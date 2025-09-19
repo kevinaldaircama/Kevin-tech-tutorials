@@ -458,3 +458,62 @@ footer .legal a {
     padding: 8px 12px;
   }
 }
+.adblock-alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,.95);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  z-index: 99999;
+  display: none;
+}
+
+.adblock-alert i {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  color: #ff4b2b;
+  animation: pulse 1.5s infinite;
+}
+
+.adblock-alert h2 {
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
+  color: #fff;
+}
+
+.adblock-alert p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  opacity: .9;
+  color: #ddd;
+}
+
+.adblock-alert strong {
+  color: #ff4b2b;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: .7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* 📱 Responsive para móviles */
+@media (max-width: 600px) {
+  .adblock-alert i {
+    font-size: 3rem;
+  }
+  .adblock-alert h2 {
+    font-size: 1.5rem;
+  }
+  .adblock-alert p {
+    font-size: 1rem;
+  }
+    }
