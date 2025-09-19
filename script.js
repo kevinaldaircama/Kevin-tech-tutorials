@@ -120,3 +120,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+// Crear un div trampa que los bloqueadores suelen ocultar
+let testAd = document.createElement("div");
+testAd.innerHTML = "&nbsp;";
+testAd.className = "adsbox"; 
+testAd.style.position = "absolute";
+testAd.style.left = "-9999px";
+document.body.appendChild(testAd);
+
+// Verificamos si el AdBlock lo ocultó
+window.setTimeout(() => {
+  if (testAd.offsetHeight === 0) {
+    document.getElementById("adblockAlert").style.display = "flex";
+    document.body.style.overflow = "hidden"; // Bloquear scroll
+  }
+  testAd.remove();
+}, 500);
