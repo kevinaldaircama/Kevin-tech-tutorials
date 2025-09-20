@@ -453,7 +453,7 @@ $('checkoutForm').onsubmit=e=>{
   });  
   if(discountPercent>0){ total=total*(1-discountPercent/100); msg+=`Descuento: ${discountPercent}%\n`; }  
   msg+=`Total: ${format(total)}`;  
-  const phone='519XXXXXXXX'; // Reemplaza por tu WhatsApp  
+  const phone='51951523071'; // Reemplaza por tu WhatsApp  
   window.open(`https://wa.me/${phone}?text=${msg}`,'_blank');  
   $('checkoutMsg').textContent='Redirigiendo a WhatsApp...';  
 };  
